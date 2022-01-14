@@ -2,7 +2,8 @@
 
 #ifdef __cplusplus
 
-#import "react-native-superpowered-sdk.h"
+#import "Superpowered.h"
+#import "MultiTracksPlayer.h"
 
 #endif
 

@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 11)
 add_library(
         cpp
         SHARED
+        src/main/cpp/Track.cpp
+        src/main/cpp/MultiTracksPlayer.cpp
         cpp-adapter.cpp
         ${PATH_TO_SUPERPOWERED}/OpenSource/SuperpoweredAndroidAudioIO.cpp
 )
@@ -19,6 +21,6 @@ target_link_libraries(
 )
 
 include_directories(
-        ../cpp
         ../superpowered
+        src/main/cpp
 )
