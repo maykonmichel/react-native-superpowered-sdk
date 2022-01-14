@@ -26,6 +26,8 @@ def getExtOrIntegerDefault(name) {
   return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties['SuperpoweredSdk_' + name]).toInteger()
 }
 
+def SUPERPOWERED_SDK_PATH = new File(projectDir, '../superpowered')
+
 android {
   compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
   buildToolsVersion getExtOrDefault('buildToolsVersion')
@@ -35,10 +37,22 @@ android {
     versionCode 1
     versionName "1.0"
 
+    ndk {
+      abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+    }
+    compileOptions {
+      incremental false
+    }
     externalNativeBuild {
       cmake {
-        cppFlags "-O2 -frtti -fexceptions -Wall -fstack-protector-all"
-        abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+        arguments '-DANDROID_PLATFORM=android-19',
+          '-DANDROID_TOOLCHAIN=clang',
+          '-DANDROID_ARM_NEON=TRUE',
+          '-DANDROID_STL=c++_static',
+          "-DPATH_TO_SUPERPOWERED:STRING=${SUPERPOWERED_SDK_PATH}"
+        cFlags '-O3', '-fsigned-char'
+        cppFlags '-fsigned-char',
+          "-I${SUPERPOWERED_SDK_PATH}"
       }
     }
 
