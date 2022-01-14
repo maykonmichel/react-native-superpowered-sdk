@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-
-import { Button } from 'react-native';
 import Superpowered, { useSuperpowered } from 'react-native-superpowered-sdk';
+
+import { Button } from './atoms';
 
 const tracksURIs = [
   'https://www.mboxdrive.com/Vocals.mp3',
