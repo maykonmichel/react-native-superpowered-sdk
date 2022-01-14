@@ -1,31 +1,31 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-superpowered-sdk';
+import { Button } from 'react-native';
+import Superpowered, { useSuperpowered } from 'react-native-superpowered-sdk';
+
+const tracksURIs = [
+  'https://www.mboxdrive.com/Vocals.mp3',
+  'https://www.mboxdrive.com/Guitars.mp3',
+  'https://www.mboxdrive.com/Drums.mp3',
+  'https://www.mboxdrive.com/Keyboards.mp3',
+  'https://www.mboxdrive.com/Effects.mp3',
+];
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  useSuperpowered({
+    licenseKey: 'ExampleLicenseKey-WillExpire-OnNextUpdate',
+    enableAudioAnalysis: false,
+    enableFFTAndFrequencyDomain: false,
+    enableAudioTimeStretching: false,
+    enableAudioEffects: true,
+    enableAudioPlayerAndDecoder: true,
+    enableCryptographics: false,
+    enableNetworking: true,
+  });
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+  useEffect(() => {
+    Superpowered.setTracks(tracksURIs);
   }, []);
 
-  return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
-  );
+  return <Button onPress={() => Superpowered.play()} title={'Play'} />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});
