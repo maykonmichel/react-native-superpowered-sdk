@@ -1,6 +1,6 @@
 {
   "name": "@maykonmichel/react-native-superpowered-sdk",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Superpowered React Native integration",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
