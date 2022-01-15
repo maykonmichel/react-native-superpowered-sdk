@@ -1,5 +1,5 @@
 {
-  "name": "react-native-superpowered-sdk",
+  "name": "@maykonmichel/react-native-superpowered-sdk",
   "version": "0.1.0",
   "description": "Superpowered React Native integration",
   "main": "lib/commonjs/index",
@@ -44,7 +44,7 @@
   },
   "homepage": "https://github.com/maykonmichel/react-native-superpowered-sdk#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
