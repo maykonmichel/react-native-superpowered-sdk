@@ -5,17 +5,26 @@ Superpowered React Native integration
 ## Installation
 
 ```sh
-npm install react-native-superpowered-sdk
+yarn add react-native-superpowered-sdk
 ```
 
 ## Usage
 
 ```js
-import { multiply } from "react-native-superpowered-sdk";
+import { useSuperpowered } from 'react-native-superpowered-sdk';
 
 // ...
 
-const result = await multiply(3, 7);
+useSuperpowered({
+  licenseKey: 'ExampleLicenseKey-WillExpire-OnNextUpdate',
+  enableAudioAnalysis: false,
+  enableFFTAndFrequencyDomain: false,
+  enableAudioTimeStretching: false,
+  enableAudioEffects: true,
+  enableAudioPlayerAndDecoder: true,
+  enableCryptographics: false,
+  enableNetworking: true,
+});
 ```
 
 ## Contributing
